@@ -136,7 +136,7 @@ Example:
 
 ```env
 GOOGLE_MAPS_API_KEY=YOUR_API_KEY
-PORT=3001
+PORT=8000
 ```
 
 Never commit secret API keys to GitHub.
