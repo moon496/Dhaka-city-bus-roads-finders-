@@ -136,14 +136,14 @@ Example:
 
 ```env
 GOOGLE_MAPS_API_KEY=YOUR_API_KEY
-PORT=3001
+PORT=8000
 ```
 
 Never commit secret API keys to GitHub.
 
 ### Run the Project
 
-Start the backend and frontend using their respective development commands defined in their package.json files.
+Start the backend from the workspace root with `npm --prefix backend start`. It listens on port `8000` by default, binds to all network interfaces, and VS Code forwards that port. Open the forwarded port to check the backend, or visit `/api/health` for its health response. Set `PORT` to use a different port.
 
 ## 9. Future Improvements
 
