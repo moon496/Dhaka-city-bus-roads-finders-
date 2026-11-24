@@ -1,0 +1,312 @@
+
+{
+  "dataset_name": "Dhaka Bus Route Finder",
+  "dataset_version": "0.2.0",
+  "city": "Dhaka",
+  "country": "Bangladesh",
+  "coordinate_format": "WGS84 decimal degrees",
+  "buses": [
+    {
+      "bus_id": "B001",
+      "bus_name": "Raida",
+      "source_name": "Raida Dhaka",
+      "routes": [
+        {
+          "route_id": "R001",
+          "route_name": "Postagola to Dia Bari",
+          "stop_names": [
+            "Postagola",
+            "Dholairpar",
+            "Jatrabari",
+            "Janapath Moor",
+            "Sayedabad",
+            "Mugdapara",
+            "Bashabo",
+            "Khilgaon",
+            "Malibagh Railgate",
+            "Rampura Bazar",
+            "Rampura Bridge",
+            "Merul",
+            "Badda",
+            "Uttar Badda",
+            "Bashtola",
+            "Notun Bazar",
+            "Nadda",
+            "Bashundhara",
+            "Jamuna Future Park",
+            "Kuril Chourasta",
+            "Kuril Bishwa Road",
+            "Khilkhet",
+            "Airport",
+            "Jashimuddin (Uttara)",
+            "Rajlakshmi",
+            "Azampur",
+            "House Building",
+            "Dia Bari"
+          ]
+        }
+      ]
+    },
+    {
+      "bus_id": "B002",
+      "bus_name": "Asim",
+      "source_name": "Achim Paribahan",
+      "routes": [
+        {
+          "route_id": "R002",
+          "route_name": "Gabtoli to Demra Staff Quarter",
+          "stop_names": [
+            "Gabtoli",
+            "Technical",
+            "Ansar Camp",
+            "Mirpur 1",
+            "Sony Cinema Hall",
+            "Mirpur 2",
+            "Mirpur 10",
+            "Mirpur 11",
+            "Purobi",
+            "Kalshi",
+            "ECB Square",
+            "MES",
+            "Shewra",
+            "Kuril Bishwa Road",
+            "Jamuna Future Park",
+            "Bashundhara",
+            "Nadda",
+            "Notun Bazar",
+            "Bashtola",
+            "Shahjadpur",
+            "Uttar Badda",
+            "Badda",
+            "Madhya Badda",
+            "Merul",
+            "Rampura Bridge",
+            "Banasree",
+            "Demra Staff Quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "bus_id": "B003",
+      "bus_name": "Alif",
+      "source_name": "Alif",
+      "routes": [
+        {
+          "route_id": "R003",
+          "route_name": "Mirpur 14 to Nandan Park",
+          "stop_names": [
+            "Mirpur 14",
+            "Mirpur 10",
+            "Mirpur 2",
+            "Sony Cinema Hall",
+            "Mirpur 1",
+            "Mazar Road",
+            "Konabari",
+            "Rupnagar",
+            "Beribadh",
+            "Birulia",
+            "Ashulia",
+            "Zirabo",
+            "Fantasy Kingdom",
+            "Nandan Park"
+          ]
+        },
+        {
+          "route_id": "R004",
+          "route_name": "Shia Mosque to Banasree",
+          "stop_names": [
+            "Shia Mosque",
+            "Japan Garden City",
+            "Adabor",
+            "Shyamoli",
+            "Shishu Mela",
+            "Agargaon",
+            "Zia Uddyan",
+            "Bijoy Sarani",
+            "Jahangir Gate",
+            "Mohakhali",
+            "Wireless",
+            "Gulshan 1",
+            "Badda Link Road",
+            "Madhya Badda",
+            "Merul",
+            "Rampura Bridge",
+            "Banasree"
+          ]
+        },
+        {
+          "route_id": "R005",
+          "route_name": "Mirpur 1 to Banasree",
+          "stop_names": [
+            "Mirpur 1",
+            "Mirpur 2",
+            "Mirpur 10",
+            "Kazipara",
+            "Shewrapara",
+            "Agargaon",
+            "Bijoy Sarani",
+            "Jahangir Gate",
+            "Mohakhali",
+            "Wireless",
+            "Gulshan 1",
+            "Badda Link Road",
+            "Madhya Badda",
+            "Merul",
+            "Rampura Bridge",
+            "Banasree"
+          ]
+        },
+        {
+          "route_id": "R006",
+          "route_name": "Japan Garden City to Abdullahpur",
+          "stop_names": [
+            "Japan Garden City",
+            "Ring Road",
+            "Adabor",
+            "Shyamoli",
+            "Shishu Mela",
+            "Agargaon",
+            "Zia Uddyan",
+            "Bijoy Sarani",
+            "Old Airport",
+            "Jahangir Gate",
+            "Mohakhali",
+            "Chairman Bari",
+            "Sainik Club",
+            "Kakali",
+            "Banani",
+            "Staff Road",
+            "MES",
+            "Shewra",
+            "Kuril Bishwa Road",
+            "Khilkhet",
+            "Airport",
+            "Jashimuddin (Uttara)",
+            "Rajlakshmi",
+            "Azampur",
+            "House Building",
+            "Abdullahpur"
+          ]
+        }
+      ]
+    },
+    {
+      "bus_id": "B004",
+      "bus_name": "Dhaka Chaka",
+      "source_name": "Dhakar Chaka",
+      "routes": [
+        {
+          "route_id": "R007",
+          "route_name": "Police Plaza to Gulshan 2",
+          "stop_names": [
+            "Police Plaza",
+            "Gulshan 1",
+            "Gulshan 2"
+          ]
+        },
+        {
+          "route_id": "R008",
+          "route_name": "Banani to Notun Bazar",
+          "stop_names": [
+            "Banani",
+            "Gulshan 2",
+            "Notun Bazar"
+          ]
+        }
+      ]
+    },
+    {
+      "bus_id": "B005",
+      "bus_name": "Anabil",
+      "source_name": "Anabil Super",
+      "routes": [
+        {
+          "route_id": "R009",
+          "route_name": "Sign Board to Gazipur Chourasta",
+          "stop_names": [
+            "Sign Board",
+            "Shonir Akhra",
+            "Jatrabari",
+            "Sayedabad",
+            "Mugdapara",
+            "Bashabo",
+            "Khilgaon",
+            "Malibagh Railgate",
+            "Hazipara",
+            "Rampura Bazar",
+            "Rampura Bridge",
+            "Merul",
+            "Badda",
+            "Uttar Badda",
+            "Shahjadpur",
+            "Bashtola",
+            "Notun Bazar",
+            "Nadda",
+            "Bashundhara",
+            "Jamuna Future Park",
+            "Kuril Bishwa Road",
+            "Khilkhet",
+            "Airport",
+            "Jashimuddin (Uttara)",
+            "Rajlakshmi",
+            "Azampur",
+            "House Building",
+            "Abdullahpur",
+            "Tongi",
+            "Station Road",
+            "Mill Gate",
+            "Board Bazar",
+            "Gazipur Bypass",
+            "Gazipur Chourasta"
+          ]
+        }
+      ]
+    },
+    {
+      "bus_id": "B006",
+      "bus_name": "Akik",
+      "source_name": "Akik",
+      "routes": [
+        {
+          "route_id": "R010",
+          "route_name": "Ansar Camp to Uttar Badda",
+          "stop_names": [
+            "Ansar Camp",
+            "Mirpur 1",
+            "Sony Cinema Hall",
+            "Mirpur 2",
+            "Mirpur 10",
+            "Mirpur 11",
+            "Purobi",
+            "Kalshi",
+            "ECB Square",
+            "MES",
+            "Shewra",
+            "Kuril Bishwa Road",
+            "Jamuna Future Park",
+            "Bashundhara",
+            "Nadda",
+            "Notun Bazar",
+            "Bashtola",
+            "Shahjadpur",
+            "Uttar Badda"
+          ]
+        }
+      ]
+    }
+  ],
+  "coordinate_policy": {
+    "latitude": null,
+    "longitude": null,
+    "coordinate_status": "needs_verification",
+    "note": "Coordinates must be verified before using Google Maps directions."
+  },
+  "notes": [
+    "Routes are based on the supplied source dataset.",
+    "Asim is mapped to Achim Paribahan.",
+    "Multiple route variants are kept separately.",
+    "Stop names should be normalized into unique stop IDs before graph-based route searching.",
+    "Routes are source-listed and are not confirmed as currently operating."
+  ]
+}

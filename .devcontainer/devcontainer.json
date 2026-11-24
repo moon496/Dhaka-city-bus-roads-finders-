@@ -1,0 +1,10 @@
+{
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "Dhaka Bus API",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  }
+}
