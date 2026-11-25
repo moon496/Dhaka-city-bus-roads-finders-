@@ -19,19 +19,17 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="nav-container">
-
-            <a href="home.html" class="logo">
+ <a href="home.html" class="logo">
                 <span class="logo-icon">🚌</span>
                 <span>Dhaka <span class="logo-highlight">Bus Route</span></span>
-            </a>
+          </a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
-            <nav class="nav-links" id="navLinks">
+ <nav class="nav-links" id="navLinks">
                 <a href="home.html">Home</a>
                 <a href="findbus.html" class="active">Find Bus</a>
                 <a href="busroutes.html">Bus Routes</a>
@@ -40,21 +38,17 @@
                 <a href="about.html">About Us</a>
             </nav>
 
-        </div>
+  </div>
     </header>
 
 
     <main>
-
-        <!-- Page Heading -->
+   <!-- Page Heading -->
         <section class="page-header">
-
-            <div class="page-header-content">
+           <div class="page-header-content">
                 <span class="section-tag">PLAN YOUR JOURNEY</span>
-
-                <h1>Find Your Bus</h1>
-
-                <p>
+           <h1>Find Your Bus</h1>
+               <p>
                     Enter your starting point and destination
                     to discover suitable bus options in Dhaka.
                 </p>
@@ -62,12 +56,9 @@
 
         </section>
 
-
-        <!-- Search Section -->
+ <!-- Search Section -->
         <section class="search-section">
-
-            <div class="search-card">
-
+           <div class="search-card">
                 <div class="search-card-heading">
                     <div>
                         <h2>Where are you going?</h2>
@@ -77,90 +68,45 @@
                     <span class="search-heading-icon">🚌</span>
                 </div>
 
-
                 <form id="busSearchForm">
-
                     <div class="location-fields">
-
-                        <div class="location-field">
-
-                            <label for="fromLocation">
+                       <div class="location-field">
+                         <label for="fromLocation">
                                 <span class="location-dot from-dot"></span>
                                 From Location
                             </label>
-
-                            <div class="input-wrapper">
+                           <div class="input-wrapper">
                                 <span class="input-icon">📍</span>
-
-                                <input
-                                    type="text"
-                                    id="fromLocation"
-                                    placeholder="Enter starting location"
-                                    autocomplete="off"
-                                    required
-                                >
+                               <input type="text" id="fromLocation"   placeholder="Enter starting location"  autocomplete="off" required >
                             </div>
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            class="swap-button"
-                            id="swapButton"
-                            title="Swap locations"
-                            aria-label="Swap locations"
-                        >
-                            ⇅
-                        </button>
-
-
-                        <div class="location-field">
-
-                            <label for="toLocation">
-                                <span class="location-dot to-dot"></span>
+  </div>
+  <button type="button" class="swap-button" id="swapButton"    title="Swap locations"     aria-label="Swap locations"  >
+                            ⇅  </button>
+    <div class="location-field">
+  <label for="toLocation">
+                  <span class="location-dot to-dot"></span>
                                 To Location
                             </label>
 
-                            <div class="input-wrapper">
-                                <span class="input-icon">📍</span>
+                 <div class="input-wrapper">
+                 <span class="input-icon">📍</span>
 
-                                <input
-                                    type="text"
-                                    id="toLocation"
-                                    placeholder="Enter destination"
-                                    autocomplete="off"
-                                    required
-                                >
+                 <input type="text"   id="toLocation"  placeholder="Enter destination"  autocomplete="off"        required >
                             </div>
+                         </div>
+     </div>
 
-                        </div>
+  <div class="search-actions">
 
-                    </div>
+<button  type="button"   class="location-button"  id="useLocationButton" >
+      <span>◎</span>
+                Use My Location
+                 </button>
 
+         <div class="main-actions">
 
-                    <div class="search-actions">
-
-                        <button
-                            type="button"
-                            class="location-button"
-                            id="useLocationButton"
-                        >
-                            <span>◎</span>
-                            Use My Location
-                        </button>
-
-                        <div class="main-actions">
-
-                            <button
-                                type="button"
-                                class="clear-button"
-                                id="clearButton"
-                            >
-                                Clear
-                            </button>
-
-                            <button type="submit" class="search-button">
+                            <button type="button"    class="clear-button"  id="clearButton">  Clear  </button>
+                     <button type="submit" class="search-button">
                                 Search Bus <span>→</span>
                             </button>
 
@@ -208,9 +154,7 @@
 
                 <span class="results-count" id="resultsCount">
                     0 Buses
-                </span>
-
-            </div>
+                </span> </div>
 
 
             <div class="results-container" id="resultsContainer">
@@ -221,8 +165,7 @@
 
                     <h3>Find a Bus for Your Journey</h3>
 
-                    <p>
-                        Enter your starting point and destination
+                    <p>  Enter your starting point and destination
                         to see matching bus options here.
                     </p>
 
@@ -247,9 +190,7 @@
 
             <div class="footer-brand">
 
-                <a href="home.html" class="logo">
-                    <span class="logo-icon">🚌</span>
-                    <span>Dhaka <span class="logo-highlight">Bus Route</span></span>
+                <a href="home.html" class="logo"> <span class="logo-icon">🚌</span> <span>Dhaka <span class="logo-highlight">Bus Route</span></span>
                 </a>
 
                 <p>
@@ -303,6 +244,5 @@
 
 
     <script src="findbus.js"></script>
-
 </body>
 </html>

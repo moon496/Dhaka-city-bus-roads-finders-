@@ -1,5 +1,5 @@
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -549,7 +549,7 @@ button {
     white-space: nowrap;
 }
 
-.bus-route-info {
+.bus-route-info{
     display: grid;
     grid-template-columns: 1fr 45px 1fr;
     align-items: center;
@@ -558,30 +558,30 @@ button {
     padding: 16px;
 }
 
-.route-point {
+.route-point{
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.route-point small {
+.route-point small{
     color: #9aa69f;
     font-size: 11px;
 }
 
-.route-point strong {
+.route-point strong{
     color: #45645a;
     font-size: 13px;
     overflow-wrap: anywhere;
 }
 
-.route-middle {
+.route-middle{
     text-align: center;
     color: #299b7e;
     font-size: 22px;
 }
 
-.bus-card-bottom {
+.bus-card-bottom{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -594,7 +594,7 @@ button {
     font-size: 12px;
 }
 
-.view-route-button {
+.view-route-button{
     border: none;
     background: #299b7e;
     color: #ffffff;
@@ -605,11 +605,11 @@ button {
     transition: 0.3s;
 }
 
-.view-route-button:hover {
+.view-route-button:hover{
     background: #217e68;
 }
 
-.no-results {
+.no-results{
     background: #ffffff;
     padding: 35px 20px;
     border: 1px solid #edf1ee;
@@ -617,17 +617,17 @@ button {
     text-align: center;
 }
 
-.no-results h3 {
+.no-results h3{
     color: #36564d;
     margin-bottom: 8px;
 }
 
-.no-results p {
+.no-results p{
     color: #87948e;
     font-size: 13px;
 }
 
-.demo-notice {
+.demo-notice{
     margin-top: 16px;
     color: #9a9f91;
     font-size: 11px;
@@ -637,13 +637,13 @@ button {
 
 /* Footer */
 
-.footer {
+.footer{
     background: #ffffff;
     border-top: 1px solid #eaf0ec;
     padding: 55px 25px 0;
 }
 
-.footer-container {
+.footer-container{
     max-width: 1150px;
     margin: auto;
     display: grid;
@@ -653,7 +653,7 @@ button {
 }
 
 .footer-brand p,
-.footer-info p {
+.footer-info p{
     color: #87948e;
     font-size: 13px;
     line-height: 1.9;
@@ -662,13 +662,13 @@ button {
 }
 
 .footer-links h3,
-.footer-info h3 {
+.footer-info h3{
     color: #36564d;
     font-size: 15px;
     margin-bottom: 17px;
 }
 
-.footer-links a {
+.footer-links a{
     display: block;
     color: #84918b;
     font-size: 13px;
@@ -676,11 +676,11 @@ button {
     transition: 0.2s;
 }
 
-.footer-links a:hover {
+.footer-links a:hover{
     color: #299b7e;
 }
 
-.footer-bottom {
+.footer-bottom{
     max-width: 1150px;
     margin: auto;
     padding: 20px 0;
@@ -701,7 +701,7 @@ button {
         gap: 15px;
     }
 
-    .nav-links a {
+    .nav-links a{
         font-size: 12px;
     }
 }
@@ -711,7 +711,7 @@ button {
 
 @media (max-width: 700px) {
 
-    .nav-container {
+    .nav-container{
         min-height: 68px;
     }
 
@@ -719,11 +719,11 @@ button {
         font-size: 18px;
     }
 
-    .menu-toggle {
+    .menu-toggle{
         display: block;
     }
 
-    .nav-links {
+    .nav-links{
         display: none;
         position: absolute;
         top: 68px;
@@ -738,58 +738,58 @@ button {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
 
-    .nav-links.show {
+    .nav-links.show{
         display: flex;
     }
 
-    .nav-links a {
+    .nav-links a{
         width: 100%;
         font-size: 14px;
         padding: 8px 0;
         border-bottom: none;
     }
 
-    .nav-links a.active {
+    .nav-links a.active{
         border-bottom: none;
     }
 
-    .page-header {
+    .page-header{
         padding: 45px 20px 90px;
     }
 
-    .page-header h1 {
+    .page-header h1{
         font-size: 34px;
     }
 
-    .page-header p {
+    .page-header p{
         font-size: 13px;
     }
 
-    .search-section {
+    .search-section{
         padding: 0 17px;
     }
 
-    .search-card {
+    .search-card{
         padding: 23px 18px;
     }
 
-    .search-card-heading h2 {
+    .search-card-heading h2{
         font-size: 19px;
     }
 
-    .location-fields {
+    .location-fields{
         flex-direction: column;
         align-items: stretch;
         gap: 13px;
     }
 
-    .swap-button {
+    .swap-button{
         align-self: center;
         transform: rotate(90deg);
         margin: 0;
     }
 
-    .swap-button:hover {
+    .swap-button:hover{
         transform: rotate(270deg);
     }
 
@@ -827,11 +827,11 @@ button {
         font-size: 23px;
     }
 
-    .bus-card {
+    .bus-card{
         padding: 17px;
     }
 
-    .bus-route-info {
+    .bus-route-info{
         grid-template-columns: 1fr 30px 1fr;
         padding: 12px;
     }
@@ -840,28 +840,28 @@ button {
         align-items: flex-start;
     }
 
-    .bus-name-section h3 {
+    .bus-name-section h3{
         font-size: 15px;
     }
 
-    .bus-card-bottom {
+    .bus-card-bottom{
         flex-wrap: wrap;
     }
 
-    .view-route-button {
+    .view-route-button{
         width: 100%;
     }
 
-    .footer-container {
+    .footer-container{
         grid-template-columns: 1fr 1fr;
         gap: 35px;
     }
 
-    .footer-brand {
+    .footer-brand{
         grid-column: 1 / -1;
     }
 
-    .footer-bottom {
+    .footer-bottom{
         flex-direction: column;
         text-align: center;
     }
@@ -870,25 +870,25 @@ button {
 
 /* Small Mobile */
 
-@media (max-width: 400px) {
+@media (max-width: 400px){
 
-    .footer-container {
+    .footer-container{
         grid-template-columns: 1fr;
     }
 
-    .footer-brand {
+    .footer-brand{
         grid-column: auto;
     }
 
-    .bus-card-top {
+    .bus-card-top{
         flex-direction: column;
     }
 
-    .results-heading {
+    .results-heading{
         align-items: flex-start;
     }
 
-    .route-point strong {
+    .route-point strong{
         font-size: 11px;
     }
 }

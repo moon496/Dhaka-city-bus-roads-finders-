@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Routes | Dhaka Bus Route</title>
+    <link rel="stylesheet" href="busroutes.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <span class="logo-icon">🚌</span>
+                <span>Dhaka Bus Route</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="home.html">Home</a>
+                <a href="findbus.html">Find Bus</a>
+                <a href="busroutes.html" class="active">Bus Routes</a>
+                <a href="nearby.html">Nearby Stops</a>
+                <a href="map.html">View Map</a>
+                <a href="about.html">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <span class="small-label">EXPLORE BUS ROUTES</span>
+                <h1>All Bus Routes in One Place</h1>
+                <p>
+                    Find bus routes and check the stops along the way.
+                    Search by bus name or stop name.
+                </p>
+            </div>
+        </section>
+
+        <section class="routes-section">
+            <div class="section-heading">
+                <div>
+                    <span class="small-label">ROUTE DIRECTORY</span>
+                    <h2>Available Bus Routes</h2>
+                    <p>Browse the bus routes and their stops.</p>
+                </div>
+
+                <div class="route-count">
+                    <span id="routeCount">0</span>
+                    <span>Routes</span>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <span class="search-icon">⌕</span>
+                <input
+                    type="text"
+                    id="routeSearch"
+                    placeholder="Search bus name or stop..."
+                    aria-label="Search bus routes"
+                >
+                <button id="clearSearch" type="button">Clear</button>
+            </div>
+
+            <p class="demo-notice">
+                These are demo routes for project testing.
+                Actual bus route information will be added later.
+            </p>
+
+            <div class="routes-grid" id="routesContainer">
+                <!-- Bus route cards will be added by JavaScript -->
+            </div>
+
+            <div class="no-results" id="noResults">
+                <div class="no-results-icon">🔍</div>
+                <h3>No routes found</h3>
+                <p>Try searching with another bus name or stop.</p>
+            </div>
+        </section>
+
+        <section class="help-section">
+            <div class="help-content">
+                <div>
+                    <span class="small-label">NEED A ROUTE?</span>
+                    <h2>Find the right bus for your journey</h2>
+                    <p>
+                        Enter your starting point and destination to find
+                        buses that can help you reach your destination.
+                    </p>
+                </div>
+
+                <a href="findbus.html" class="help-button">
+                    Find a Bus <span>→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="home.html" class="logo">
+                    <span class="logo-icon">🚌</span>
+                    <span>Dhaka Bus Route</span>
+                </a>
+                <p>
+                    Making public transportation information
+                    easier to explore.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="findbus.html">Find Bus</a>
+                <a href="busroutes.html">Bus Routes</a>
+                <a href="nearby.html">Nearby Stops</a>
+                <a href="map.html">View Map</a>
+                <a href="about.html">About Us</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="currentYear"></span> Dhaka Bus Route. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="busroutes.js"></script>
+</body>
+</html>

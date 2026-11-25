@@ -371,10 +371,8 @@ function escapeHTML(value) {
             '"': "&quot;",
             "'": "&#39;"
         };
-
-        return entities[character];
-
-    });
+   return entities[character];
+  });
 
 }
 
