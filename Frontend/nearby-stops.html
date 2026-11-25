@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find Dhaka bus services that pass through a stop near you.">
+    <title>Nearby Stops | Dhaka Bus Route</title>
+    <link rel="stylesheet" href="stylej.css">
+    <link rel="stylesheet" href="nearby-stops.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <span class="logo-icon">🚌</span>
+                <span>Dhaka <span class="logo-highlight">Bus Route</span></span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+                <a href="home.html">Home</a>
+                <a href="findbus.html">Find Bus</a>
+                <a href="busroutes.html">Bus Routes</a>
+                <a href="nearby-stops.html" class="active" aria-current="page">Nearby Stops</a>
+                <a href="view-maps.html">View Maps</a>
+                <a href="about-us.html">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="page-banner-content">
+                <span class="welcome-tag"><span class="welcome-dot"></span> Find a stop on your route</span>
+                <h1>Nearby <span>Bus Stops</span></h1>
+                <p>Choose a stop or area to see which listed bus services pass through it.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="panel stop-search-panel">
+                <div class="section-heading">
+                    <span class="section-tag">SEARCH STOPS</span>
+                    <h2>Where are you heading from?</h2>
+                    <p>Search a stop name from the available Dhaka route list.</p>
+                </div>
+                <form id="stopSearchForm" class="search-form">
+                    <label class="sr-only" for="stopSearch">Bus stop or area</label>
+                    <input id="stopSearch" name="stop" type="search" list="stopSuggestions" placeholder="Try Mirpur 10 or Farmgate" autocomplete="off" required>
+                    <datalist id="stopSuggestions"></datalist>
+                    <button class="primary-button" type="submit">Find buses <span aria-hidden="true">→</span></button>
+                </form>
+                <p id="stopSearchStatus" class="status-message" role="status" aria-live="polite">Loading available stops…</p>
+                <div id="popularStops" class="popular-stops" aria-label="Popular stops"></div>
+            </div>
+
+            <div class="results-section">
+                <div class="results-heading">
+                    <div>
+                        <span class="section-tag">BUS SERVICES</span>
+                        <h2 id="nearbyResultsTitle">Services at your stop</h2>
+                    </div>
+                    <span id="nearbyResultCount" class="result-count"></span>
+                </div>
+                <div id="nearbyResults" class="results-grid" aria-live="polite">
+                    <div class="empty-state">Search for a stop to see matching routes.</div>
+                </div>
+            </div>
+
+            <aside class="notice-card">
+                <span class="notice-icon" aria-hidden="true">ℹ</span>
+                <p><strong>About location:</strong> The current route list does not include stop coordinates, so this page cannot determine your GPS-nearest stop. Search by a stop name instead. Route information is guidance, not live service data.</p>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="home.html" class="logo"><span class="logo-icon">🚌</span><span>Dhaka <span class="logo-highlight">Bus Route</span></span></a>
+                <p>Helping everyone find their way around Dhaka with easier bus route information.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="findbus.html">Find Bus</a>
+                <a href="busroutes.html">Bus Routes</a>
+                <a href="nearby-stops.html">Nearby Stops</a>
+                <a href="view-maps.html">View Maps</a>
+                <a href="about-us.html">About Us</a>
+            </div>
+            <div class="footer-info">
+                <h3>Our Goal</h3>
+                <p>Making public transportation information more accessible and convenient for everyone.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="currentYear"></span> Dhaka Bus Route. All rights reserved.</p>
+            <p>Designed for easier journeys in Dhaka.</p>
+        </div>
+    </footer>
+    <script src="nearby-stops.js"></script>
+</body>
+</html>
