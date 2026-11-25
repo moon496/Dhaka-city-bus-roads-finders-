@@ -10,7 +10,7 @@ menuToggle.addEventListener("click", function () {
 });
 
 
-// Close Mobile Menu After Clicking a Link
+// Closing Mobile Menu After Clicking a Link
 
 document.querySelectorAll(".nav-links a").forEach(function (link) {
 
