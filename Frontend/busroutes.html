@@ -24,54 +24,12 @@
                 <a href="home.html">Home</a>
                 <a href="findbus.html">Find Bus</a>
                 <a href="busroutes.html" class="active">Bus Routes</a>
-                <a href="nearby.html">Nearby Stops</a>
-                <a href="map.html">View Map</a>
-                <a href="about.html">About Us</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="page-hero">
-            <div class="page-hero-content">
-                <span class="small-label">EXPLORE BUS ROUTES</span>
-                <h1>All Bus Routes in One Place</h1>
-                <p>
-                    Find bus routes and check the stops along the way.
-                    Search by bus name or stop name.
-                </p>
-            </div>
-        </section>
-
-        <section class="routes-section">
-            <div class="section-heading">
-                <div>
-                    <span class="small-label">ROUTE DIRECTORY</span>
-                    <h2>Available Bus Routes</h2>
-                    <p>Browse the bus routes and their stops.</p>
-                </div>
-
-                <div class="route-count">
-                    <span id="routeCount">0</span>
-                    <span>Routes</span>
-                </div>
-            </div>
-
-            <div class="search-box">
-                <span class="search-icon">⌕</span>
-                <input
-                    type="text"
-                    id="routeSearch"
-                    placeholder="Search bus name or stop..."
-                    aria-label="Search bus routes"
-                >
-                <button id="clearSearch" type="button">Clear</button>
-            </div>
-
-            <p class="demo-notice">
-                These are demo routes for project testing.
-                Actual bus route information will be added later.
+                <a href="nearby-stops.html">Nearby Stops</a>
+                <a href="view-maps.html">View Map</a>
+                Routes are based on the supplied dataset and are not confirmed as currently operating.
             </p>
+
+            <p id="routeLoadStatus" role="status" aria-live="polite">Loading routes…</p>
 
             <div class="routes-grid" id="routesContainer">
                 <!-- Bus route cards will be added by JavaScript -->
@@ -120,8 +78,8 @@
                 <a href="home.html">Home</a>
                 <a href="findbus.html">Find Bus</a>
                 <a href="busroutes.html">Bus Routes</a>
-                <a href="nearby.html">Nearby Stops</a>
-                <a href="map.html">View Map</a>
+                <a href="nearby-stops.html">Nearby Stops</a>
+                <a href="view-maps.html">View Map</a>
                 <a href="about.html">About Us</a>
             </div>
         </div>
@@ -131,6 +89,7 @@
         </div>
     </footer>
 
+    <script src="api.js"></script>
     <script src="busroutes.js"></script>
 </body>
 </html>

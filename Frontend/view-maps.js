@@ -63,19 +63,9 @@ if (routeSelect && mapStatus && routeDetails) {
         renderRoute(routes, routeSelect.value);
     });
 
-    fetch("../backend/data/dhaka_bus_routes.json")
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("Route data request failed with status " + response.status);
-            }
-            return response.json();
-        })
-        .then(function (data) {
-            if (!data || !Array.isArray(data.buses)) {
-                throw new Error("The route data has an unexpected format.");
-            }
-
-            data.buses.forEach(function (bus, busIndex) {
+    window.busApi.getBuses()
+        .then(function (buses) {
+            buses.forEach(function (bus, busIndex) {
                 (bus.routes || []).forEach(function (route, routeIndex) {
                     if (Array.isArray(route.stop_names) && route.stop_names.length > 0) {
                         routes.push({
@@ -108,7 +98,7 @@ if (routeSelect && mapStatus && routeDetails) {
         .catch(function (error) {
             console.error("Unable to load route-map data:", error);
             routeSelect.disabled = true;
-            setMapStatus("Could not load route data. Open the site through a local web server from the project root and try again.", true);
+            setMapStatus("Could not load route data from the backend. Check that the bus service is running and try again.", true);
             routeDetails.replaceChildren(createTextElement("div", "empty-state", "Route information is unavailable until the dataset can be loaded."));
         });
 }

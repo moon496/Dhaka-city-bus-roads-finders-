@@ -127,19 +127,9 @@ if (form) {
         showResults(canonicalStop);
     });
 
-    fetch("../backend/data/dhaka_bus_routes.json")
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("Route data request failed with status " + response.status);
-            }
-            return response.json();
-        })
+    window.busApi.getBuses()
         .then(function (data) {
-            if (!data || !Array.isArray(data.buses)) {
-                throw new Error("The route data has an unexpected format.");
-            }
-
-            buses = data.buses;
+            buses = data;
             const stopCounts = new Map();
             buses.forEach(function (bus) {
                 (bus.routes || []).forEach(function (route) {
@@ -175,7 +165,7 @@ if (form) {
         })
         .catch(function (error) {
             console.error("Unable to load nearby-stop data:", error);
-            setStatus("Could not load route data. Open the site through a local web server from the project root and try again.", true);
+            setStatus("Could not load route data from the backend. Check that the bus service is running and try again.", true);
             results.replaceChildren(createTextElement("div", "empty-state", "Route information is unavailable until the dataset can be loaded."));
         });
 }

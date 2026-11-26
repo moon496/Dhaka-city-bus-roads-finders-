@@ -19,60 +19,18 @@ const navLinks = document.getElementById("navLinks");
 let currentLocationCoordinates = null;
 
 
-// Demo Bus Data
+let busDataPromise = null;
 
-const busData = [
-    {
-        name: "Demo Bus A",
-        route: "Mirpur - Motijheel",
-        stops: [
-            "Mirpur 10",
-            "Kazipara",
-            "Agargaon",
-            "Farmgate",
-            "Shahbagh",
-            "Motijheel"
-        ]
-    },
-
-    {
-        name: "Demo Bus B",
-        route: "Uttara - Shahbagh",
-        stops: [
-            "Uttara",
-            "Airport",
-            "Banani",
-            "Mohakhali",
-            "Farmgate",
-            "Shahbagh"
-        ]
-    },
-
-    {
-        name: "Demo Bus C",
-        route: "Mohammadpur - Motijheel",
-        stops: [
-            "Mohammadpur",
-            "Dhanmondi",
-            "Science Lab",
-            "Shahbagh",
-            "Gulistan",
-            "Motijheel"
-        ]
-    },
-
-    {
-        name: "Demo Bus D",
-        route: "Mirpur - Shahbagh",
-        stops: [
-            "Mirpur 10",
-            "Kazipara",
-            "Agargaon",
-            "Farmgate",
-            "Shahbagh"
-        ]
+function loadBusData() {
+    if (!busDataPromise) {
+        busDataPromise = window.busApi.getBuses().catch(function (error) {
+            busDataPromise = null;
+            throw error;
+        });
     }
-];
+
+    return busDataPromise;
+}
 
 
 // Mobile Navigation
@@ -197,7 +155,7 @@ useLocationButton.addEventListener("click", function () {
 
 // Search Bus Routes
 
-busSearchForm.addEventListener("submit", function (event) {
+busSearchForm.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
@@ -230,33 +188,76 @@ busSearchForm.addEventListener("submit", function (event) {
         return;
     }
 
-    searchMessage.textContent = "";
+    if (from === "My Current Location") {
 
-    findMatchingBuses(from, to);
+        searchMessage.textContent =
+            "The route dataset has no stop coordinates to match your current location. Enter a nearby stop name instead.";
+
+        return;
+    }
+
+    searchMessage.style.color = "#299b7e";
+    searchMessage.textContent = "Searching listed bus routes…";
+
+    try {
+        const buses = await loadBusData();
+        const matchingRoutes = findMatchingBuses(buses, from, to);
+        searchMessage.textContent = "";
+        searchMessage.style.color = "";
+        displayResults(matchingRoutes, from, to);
+    } catch (error) {
+        console.error("Unable to search bus routes:", error);
+        searchMessage.style.color = "#b45b4d";
+        searchMessage.textContent =
+            "Could not load bus routes from the backend. Check that the bus service is running and try again.";
+    }
 
 });
 
 
 // Find Matching Buses
 
-function findMatchingBuses(from, to) {
+function findMatchingBuses(buses, from, to) {
+    function normalize(value) {
+        return String(value)
+            .trim()
+            .replace(/\s+/g, " ")
+            .toLowerCase();
+    }
 
-    const matchingBuses = busData.filter(function (bus) {
+    const fromQuery = normalize(from);
+    const toQuery = normalize(to);
+    const results = [];
 
-        const fromIndex = bus.stops.findIndex(function (stop) {
-            return stop.toLowerCase().includes(from.toLowerCase());
+    buses.forEach(function (bus) {
+        (bus.routes || []).forEach(function (route) {
+            const stops = route.stop_names || [];
+
+            const fromIndex = stops.findIndex(
+                stop => normalize(stop) === fromQuery
+            );
+
+            if (fromIndex === -1) return;
+
+            const toIndex = stops.findIndex(
+                (stop, index) =>
+                    index > fromIndex &&
+                    normalize(stop) === toQuery
+            );
+
+            if (toIndex === -1) return;
+
+            results.push({
+                busName: bus.bus_name || bus.source_name || "Bus service",
+                routeName: route.route_name || "Route",
+                stops: stops,
+                fromStop: stops[fromIndex],
+                toStop: stops[toIndex]
+            });
         });
-
-        const toIndex = bus.stops.findIndex(function (stop) {
-            return stop.toLowerCase().includes(to.toLowerCase());
-        });
-
-        return fromIndex !== -1 && toIndex > fromIndex;
-
     });
 
-    displayResults(matchingBuses, from, to);
-
+    return results;
 }
 
 
@@ -271,16 +272,19 @@ function displayResults(buses, from, to) {
 
     resultsCount.textContent = buses.length + " Buses";
 
-    document.getElementById("demoNotice").style.display = "block";
+    const routeNotice = document.getElementById("demoNotice");
+    routeNotice.textContent =
+        "Routes are based on the supplied dataset and are not confirmed as currently operating.";
+    routeNotice.style.display = "block";
 
     if (buses.length === 0) {
 
         resultsContainer.innerHTML = `
             <div class="no-results">
                 <div class="empty-icon">🔍</div>
-                <h3>No Matching Demo Buses Found</h3>
+                <h3>No Matching Bus Routes Found</h3>
                 <p>
-                    No matching route was found in the sample data.
+                    No listed route was found in the supplied dataset.
                     Try another location.
                 </p>
             </div>
@@ -295,10 +299,10 @@ function displayResults(buses, from, to) {
 
         busCard.className = "bus-card";
 
-        const safeName = escapeHTML(bus.name);
-        const safeRoute = escapeHTML(bus.route);
-        const safeFrom = escapeHTML(from);
-        const safeTo = escapeHTML(to);
+        const safeName = escapeHTML(bus.busName);
+        const safeRoute = escapeHTML(bus.routeName);
+        const safeFrom = escapeHTML(bus.fromStop);
+        const safeTo = escapeHTML(bus.toStop);
 
         busCard.innerHTML = `
             <div class="bus-card-top">
@@ -309,12 +313,12 @@ function displayResults(buses, from, to) {
 
                     <div>
                         <h3>${safeName}</h3>
-                        <p>Bus route information</p>
+                        <p>Bus service</p>
                     </div>
 
                 </div>
 
-                <span class="demo-label">DEMO DATA</span>
+                <span class="demo-label">LISTED ROUTE</span>
 
             </div>
 
