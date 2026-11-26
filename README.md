@@ -124,11 +124,7 @@ cd YOUR_PROJECT_FOLDER
 
 ### Install Dependencies
 
-Install the dependencies for the frontend and backend according to their respective package.json files.
-
-```bash
-npm install
-```
+The backend currently uses only Node.js built-in modules, so no additional package installation is required.
 
 ### Configure Environment Variables
 
@@ -146,7 +142,7 @@ Never commit secret API keys to GitHub.
 ### Run the Project
 
 
-Start the backend from the workspace root with `npm --prefix backend start`. It listens on port `8000` by default, binds to all network interfaces, and VS Code forwards that port. Open the forwarded port to check the backend, or visit `/api/health` for its health response. Set `PORT` to use a different port.
+From the project root, start the backend with `npm --prefix backend start`. It listens on port `8000` by default. In a second terminal, serve the project root with `python3 -m http.server 3000`, then open `http://localhost:3000/` for the frontend. The frontend calls the backend at `http://localhost:8000/api`; visit `http://localhost:8000/api/health` to check the backend. The backend port can be changed with `PORT`, and the frontend API base can be overridden by setting `window.BUS_API_BASE` before loading `Frontend/api.js`.
 
 ## 9. Future Improvements
 
@@ -172,4 +168,3 @@ The main focus is to help passengers travel between locations even when direct b
 **Project Type:** Web-Based Public Transportation Route Finder
 
 **Development Status:** In Development
-
