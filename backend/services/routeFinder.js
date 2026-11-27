@@ -1,37 +1,47 @@
-const fs = require('fs');
-const path = require('path');
+const pool = require("../config/db");
 
-
-const dataPath = path.join(__dirname, '../data/dhaka_bus_routes.json');
-const busData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-
-const buses = busData.data || busData;
-
-function buildGraph() {
+async function buildGraph() {
   const graph = {};
-  buses.forEach(bus => {
-    const route = bus.routes;
-    for (let i = 0; i < route.length - 1; i++) {
-      const from = route[i];
-      const to = route[i + 1];
-      if (!graph[from]) graph[from] = [];
-      graph[from].push({ to, bus: bus.english, cost: 1 });
+
+  const query = `
+    SELECT r.id as route_id, r.route_name, s.name_en as stop_name, rs.stop_order
+    FROM routes r
+    JOIN route_stops rs ON r.id = rs.route_id
+    JOIN stops s ON rs.stop_id = s.id
+    ORDER BY r.id, rs.stop_order
+  `;
+
+  const result = await pool.query(query);
+  const rows = result.rows;
+
+  const routesMap = {};
+  rows.forEach((row) => {
+    if (!routesMap[row.route_id]) {
+      routesMap[row.route_id] = { name: row.route_name, stops: [] };
     }
-    
-    for (let i = route.length - 1; i > 0; i--) {
-      const from = route[i];
-      const to = route[i - 1];
+    routesMap[row.route_id].stops.push(row.stop_name);
+  });
+
+  Object.values(routesMap).forEach((route) => {
+    const stops = route.stops;
+    for (let i = 0; i < stops.length - 1; i++) {
+      const from = stops[i];
+      const to = stops[i + 1];
+
       if (!graph[from]) graph[from] = [];
-      graph[from].push({ to, bus: bus.english, cost: 1 });
+      graph[from].push({ to, bus: route.name, cost: 1 });
+
+      if (!graph[to]) graph[to] = [];
+      graph[to].push({ to: from, bus: route.name, cost: 1 });
     }
   });
+
   return graph;
 }
 
-const graph = buildGraph();
-
-function findShortestPath(start, end) {
-  if (!graph[start]) return { message: "Start stop not found", path: [], legs: [] };
+function findShortestPath(graph, start, end) {
+  if (!graph[start])
+    return { message: "Start stop not found", path: [], legs: [] };
   if (!graph[end]) return { message: "End stop not found", path: [], legs: [] };
 
   const distances = {};
@@ -39,13 +49,13 @@ function findShortestPath(start, end) {
   const previousBus = {};
   const queue = new Set(Object.keys(graph));
 
-  Object.keys(graph).forEach(node => (distances[node] = Infinity));
+  Object.keys(graph).forEach((node) => (distances[node] = Infinity));
   distances[start] = 0;
 
   while (queue.size > 0) {
     let current = null;
     let minDist = Infinity;
-    queue.forEach(node => {
+    queue.forEach((node) => {
       if (distances[node] < minDist) {
         minDist = distances[node];
         current = node;
@@ -56,12 +66,12 @@ function findShortestPath(start, end) {
     queue.delete(current);
 
     const neighbors = graph[current] || [];
-    neighbors.forEach(edge => {
-      
+    neighbors.forEach((edge) => {
       let penalty = 0;
-      if (previousBus[current] && previousBus[current] !== edge.bus) penalty = 5; 
+      if (previousBus[current] && previousBus[current] !== edge.bus)
+        penalty = 5;
       const newDist = distances[current] + edge.cost + penalty;
-      
+
       if (newDist < distances[edge.to]) {
         distances[edge.to] = newDist;
         previous[edge.to] = current;
@@ -75,7 +85,6 @@ function findShortestPath(start, end) {
     return { message: "No route found", path: [], legs: [] };
   }
 
-  
   const path = [];
   let step = end;
   while (step) {
@@ -83,14 +92,13 @@ function findShortestPath(start, end) {
     step = previous[step];
   }
 
-  
   const legs = [];
   let currentBus = null;
   let legStart = path[0];
   for (let i = 0; i < path.length - 1; i++) {
     const from = path[i];
     const to = path[i + 1];
-    const edge = (graph[from] || []).find(e => e.to === to);
+    const edge = (graph[from] || []).find((e) => e.to === to);
     if (!edge) continue;
     if (currentBus === null) {
       currentBus = edge.bus;
@@ -100,14 +108,15 @@ function findShortestPath(start, end) {
       legStart = from;
     }
   }
-  if (currentBus) legs.push({ bus: currentBus, from: legStart, to: path[path.length - 1] });
+  if (currentBus)
+    legs.push({ bus: currentBus, from: legStart, to: path[path.length - 1] });
 
   return {
     totalStops: path.length - 1,
     path,
     legs,
-    buses: [...new Set(legs.map(l => l.bus))]
+    buses: [...new Set(legs.map((l) => l.bus))],
   };
 }
 
-module.exports = { findShortestPath, graph };
+module.exports = { buildGraph, findShortestPath };
